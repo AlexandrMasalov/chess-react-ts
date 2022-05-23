@@ -17,7 +17,12 @@ export class King extends Figure {
     if (!super.canMove(target)) {
       return false;
     }
-    return true;
+    const direction = this.cell.figure?.color === Colors.BLACK ? 1 : -1;
+
+    if (target.y === this.cell.y + direction && target.x === this.cell.x && this.cell.board.getCell(target.x, target.y).isEmpty()) {
+      return true;
+    }
+    return false;
   }
   
 }
